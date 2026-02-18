@@ -1,0 +1,214 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void clearscreen();
+void auditory-shell();
+void visual-shell();
+void kinesthetic-shell();
+int counter = 0;
+int total-kinestheticPoints = 0;
+int total-visualPoints = 0;
+int total-auditoryPoints = 0;
+
+int main() {
+	int start;
+
+	cout << "WHAT IS YOUR LEARNING STYLE?" << endl;
+	cout << "\nIn this test, you can determine what is your learning style by answering each following questions based on how frequent you perform them" << endl;
+	cout << "\nYou must answer each questions based on the following choices : "
+	     << "\n[1] Always"
+	     << "\n[2] Sometimes"
+	     << "\n[3] Rarely"
+	     << endl;
+
+	cout << "\nPress [1] to Start" << endl;
+	cin >> start;
+	clearscreen();
+
+	if (start == 1) {
+		auditory-shell();
+		visual-shell();
+		kinesthetic-shell();
+
+		int totalPoints-shell[3] = { total-kinestheticPoints, total-visualPoints, total-auditoryPoints };
+		string styles[3] = { "Kinesthetic", "Visual", "Auditory" };
+
+		int maxIndex = 0;
+		for (int i = 1; i < 3; i++) {
+			if (totalPoints-shell[i] > totalPoints-shell[maxIndex]) {
+				maxIndex = i;
+			}
+		}
+
+		cout << "Your highest score is " << totalPoints-shell[maxIndex] << " in " << styles[maxIndex] << " learning style." << endl;
+		cout << "\n" << endl;
+		cout << "Your points: " << endl;
+		cout << "Auditory : " << totalPoints-shell[2] << endl;
+		cout << "Kinesthetic : " << totalPoints-shell[0] << endl;
+		cout << "Visual : " << totalPoints-shell[1] << endl;
+		
+		
+
+	} else {
+		cout << "\nClosing the test, THANK YOU!!" << endl;
+	}
+}
+
+void clearscreen() {
+#ifdef -WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+}
+
+void auditory-shell() {
+	int temp-auditoryPoints;
+	int auditoryPoints;
+
+	vector <string> auditory= {
+		"I can remember best about a subject by listening to a lecture that includes information, explanation, and discussions.",
+		"I require explantions of diagram, graphs, or visual directons.",
+		"I can easily identify different types of sounds.",
+		"I do best in academic subjects by listening to lecture and vidoes.",
+		"I learn to spell better by repeating words out loud than by writing the words on paper.",
+		"I would rather listen to a good lecture or speech than read about the same material in the textbook.",
+		"I prefer listening to the news on thr radio rather than reading the newspaper.",
+		"I follow verbal directions better than written ones."
+	};
+
+	int i=0;
+	while (i!=8) {
+		cout << "Please only choose on the following: ";
+		cout  << "\n[1] Always"
+		      << "\n[2] Sometimes"
+		      << "\n[3] Rarely"
+		      << "\n"
+		      << endl;
+
+		do {
+			cout << counter+1 << ". " <<auditory[i] << endl;
+			cout << "Frequency : ";
+			cin >> temp-auditoryPoints;
+
+			if (temp-auditoryPoints == 1) {
+				auditoryPoints = 5;
+				total-auditoryPoints += auditoryPoints;
+			} else if (temp-auditoryPoints == 2) {
+				auditoryPoints = 3;
+				total-auditoryPoints += auditoryPoints;
+			} else if (temp-auditoryPoints == 3) {
+				auditoryPoints = 1;
+				total-auditoryPoints += auditoryPoints;
+			} else {
+				cout << "\nERROR : Invalid Response!!" << endl;
+				cout << "Initiating to reanswer the previous question..." << endl;
+				cout << "\n" << endl;
+			}
+		} while(temp-auditoryPoints > 4);
+		i++;
+		counter++;
+		clearscreen();
+	}
+}
+
+void visual-shell() {
+	int temp-visualPoints;
+	int visualPoints;
+
+	vector <string> visual= {
+		"I prefer to see information written on the board and supplemented by visual aids and assigned readings.",
+		"I like to write things down or take notes for visual review.",
+		"I enjoy developing and making graphs and charts.",
+		"I can easily identify different types of sounds.",
+		"I can understand a news article better by reading about it in a newwspaper that by listening to a report about it on the radio or TV.",
+		"I think the best way to to remember something is to picture it in your head.",
+		"I am good at working and solving jigsaw puzzles and mazes.",
+		"I prefer obtaining infomation about an interesting subjects by reading about it."
+	};
+
+	int i=0;
+	while (i!=8) {
+		cout << "Please only choose on the following: ";
+		cout  << "\n[1] Always"
+		      << "\n[2] Sometimes"
+		      << "\n[3] Rarely"
+		      << "\n"
+		      << endl;
+
+		do {
+			cout << counter+1 << ". " <<visual[i] << endl;
+			cout << "Frequency : ";
+			cin >> temp-visualPoints;
+
+			if (temp-visualPoints == 1) {
+				visualPoints = 5;
+				total-visualPoints +=visualPoints;
+			} else if (temp-visualPoints == 2) {
+				visualPoints = 3;
+				total-visualPoints += visualPoints;
+			} else if (temp-visualPoints == 3) {
+				visualPoints = 1;
+				total-visualPoints += visualPoints;
+			} else {
+				cout << "\nERROR : Invalid Response!!" << endl;
+				cout << "Initiating to reanswer the previous question..." << endl;
+				cout << "\n" << endl;
+			}
+		} while(temp-visualPoints > 4);
+		i++;
+		counter++;
+		clearscreen();
+	}
+}
+
+void kinesthetic-shell() {
+	int temp-kinestheticPoints;
+	int kinestheticPoints;
+
+	vector <string> kinesthetic= {
+		"I prefer to use poster, models, or actual practice and other activities in class.",
+		"I enjoy working with my hands or making things.",
+		"I remember best by writing things down.",
+		"I play with coins or keys in my pocket.",
+		"I chew gum, or snack while studying.",
+		"I learn the spelling of words by 'finger spelling' them.",
+		"I grip objects in my hands during learning or study periods.",
+		"I fell very comfortable touching others, hugging, handshakes, etc."
+	};
+
+	int i=0;
+	while (i!=8) {
+		cout << "Please only choose on the following: ";
+		cout  << "\n[1] Always"
+		      << "\n[2] Sometimes"
+		      << "\n[3] Rarely"
+		      << "\n"
+		      << endl;
+
+		do {
+			cout << counter+1 << ". " <<kinesthetic[i] << endl;
+			cout << "Frequency : ";
+			cin >> temp-kinestheticPoints;
+
+			if (temp-kinestheticPoints == 1) {
+				kinestheticPoints = 5;
+				total-kinestheticPoints += kinestheticPoints;
+			} else if (temp-kinestheticPoints == 2) {
+				kinestheticPoints = 3;
+				total-kinestheticPoints += kinestheticPoints;
+			} else if (temp-kinestheticPoints == 3) {
+				kinestheticPoints = 1;
+				total-kinestheticPoints += kinestheticPoints;
+			} else {
+				cout << "\nERROR : Invalid Response!!" << endl;
+				cout << "Initiating to reanswer the previous question..." << endl;
+				cout << "\n" << endl;
+			}
+		} while(temp-kinestheticPoints > 4);
+		i++;
+		counter++;
+		clearscreen();
+	}
+}
